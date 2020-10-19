@@ -6,19 +6,6 @@ namespace eazyLab1
 {
     class Program
     {
-        
-        
-        public static Book EnterBook()
-        {
-            
-            Console.Write("Enter title: ");
-            string title = Console.ReadLine();
-            Console.Write("Enter author's name: ");
-            string author = Console.ReadLine();
-
-
-            return new Book(title, author);
-        } 
 
         static void Main(string[] args)
         {
@@ -28,19 +15,21 @@ namespace eazyLab1
 
             string input ="" ;
 
-            PublishingHouse house = new PublishingHouse("Sun House", new List<Book>(),2001,0);
+            
+            
             while (true)
             {
                 
-                Console.WriteLine("To publish book press 1");
+                Console.WriteLine("To enter new statement data press 1");
                 Console.WriteLine("To print info press 2");
 
                 input = Console.ReadLine();
                 switch (input)
                 {
                     case "1":
-                        Console.WriteLine("How many books you want to publish?");
+                        Console.WriteLine("How many statements do you want to enter ?");
                         int amount = Int32.Parse(Console.ReadLine());
+                        
                         List<Book> newBooks = new List<Book>();
                         for(int i = 0; i< amount; i++)
                         {

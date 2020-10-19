@@ -50,6 +50,20 @@ namespace eazyLab1
             }
             return arrayList;
         }
+        public static Statement CreateAndFillFromConsole()
+        {
+            Console.WriteLine("-----------------------");
+            Console.Write("Enter Warehouse Id: ");
+            int id = Int32.Parse(Console.ReadLine());
+            Console.Write("Enter balance at the start of period: ");
+            float balanceAtStart = float.Parse(Console.ReadLine());
+            Console.Write("Enter received money : ");
+            float received = float.Parse(Console.ReadLine());
+            Console.Write("Enter issued money: ");
+            float issued = float.Parse(Console.ReadLine());
+            Console.WriteLine("-----------------------");
+            return new Statement(id, balanceAtStart, received, issued);
+        }
 
     }
 }
