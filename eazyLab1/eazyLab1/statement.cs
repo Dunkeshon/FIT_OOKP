@@ -6,7 +6,6 @@ namespace eazyLab1
 {
     class Statement
     {
-        // id ?
         public int WarehouseId { get; }
         public float BalanceAtStart { get; }
         public float Received { get; } // add to balance 
@@ -23,11 +22,11 @@ namespace eazyLab1
         }
         public override string ToString()
         {
-            return "WarehouseId: " +  WarehouseId + " | " 
+            return "Warehouse Id: " +  WarehouseId + " | " 
                 + "Balance at start of the period: " + BalanceAtStart + " grn" + " | " 
                 + "Received: " + Received + " grn" + " | " 
                 + "Issued: " + Issued + " grn" + " | " 
-                + "BalanceInTheEnd: "+ BalanceInTheEnd + " grn";
+                + "Balance in the end of the period: " + BalanceInTheEnd + " grn";
         }
         public string ToStringUsingBackslash()
         {
@@ -44,9 +43,12 @@ namespace eazyLab1
             string[] lines = infoFromFile.Split('\n');
             foreach(string i in lines)
             {
+                if (i != "")
+                {
                 string[] atoms = i.Split("\\");
                 Statement temp = new Statement(Int32.Parse(atoms[0]), float.Parse(atoms[1]), float.Parse(atoms[2]), float.Parse(atoms[3]));
                 arrayList.Add(temp);
+                }
             }
             return arrayList;
         }
@@ -64,6 +66,43 @@ namespace eazyLab1
             Console.WriteLine("-----------------------");
             return new Statement(id, balanceAtStart, received, issued);
         }
+        public static float SumOfBalanceAtStart(ArrayList list)
+        {
+            float sum = 0;
+            foreach(Statement i in list)
+            {
+                sum += i.BalanceAtStart;
+            }
+            return sum;
+        }
+        public static float SumOfReceived(ArrayList list)
+        {
+            float sum = 0;
+            foreach (Statement i in list)
+            {
+                sum += i.Received;
+            }
+            return sum;
+        }
+        public static float SumOfIssued(ArrayList list)
+        {
+            float sum = 0;
+            foreach (Statement i in list)
+            {
+                sum += i.Issued;
+            }
+            return sum;
+        }
+        public static float SumOfBalanceInTheEnd(ArrayList list)
+        {
+            float sum = 0;
+            foreach (Statement i in list)
+            {
+                sum += i.BalanceInTheEnd;
+            }
+            return sum;
+        }
+
 
     }
 }
