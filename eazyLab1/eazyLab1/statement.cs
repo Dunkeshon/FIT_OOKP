@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Text;
 
 namespace eazyLab1
 {
     class Statement
     {
+        // id ?
         public int WarehouseId { get; }
         public float BalanceAtStart { get; }
         public float Received { get; } // add to balance 
@@ -35,6 +36,19 @@ namespace eazyLab1
         private float CalculateBalanceInTheEnd()
         {
             return BalanceAtStart + Received - Issued;
+        }
+        public static ArrayList GetArrayListOfStatementsFromFile(string fileName)
+        {
+            ArrayList arrayList = new ArrayList();
+            string infoFromFile = WorkWithFiles.ReadEverythingFromFile(fileName);
+            string[] lines = infoFromFile.Split('\n');
+            foreach(string i in lines)
+            {
+                string[] atoms = i.Split("\\");
+                Statement temp = new Statement(Int32.Parse(atoms[0]), float.Parse(atoms[1]), float.Parse(atoms[2]), float.Parse(atoms[3]));
+                arrayList.Add(temp);
+            }
+            return arrayList;
         }
 
     }
