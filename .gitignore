@@ -358,3 +358,5 @@ MigrationBackup/
 .ionide/
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio
+eazyLab1/eazyLab1.sln
+eazyLab1/eazyLab1/eazyLab1.csproj
